@@ -6,6 +6,7 @@ import com.shubham.Nexwent.Entity.Enums.EventStatus;
 import com.shubham.Nexwent.Entity.Enums.VenueStatus;
 import com.shubham.Nexwent.Service.Email.Presets.AttendeeHtmlPresets;
 import com.shubham.Nexwent.Service.Email.Presets.EventHtmlPresets;
+import com.shubham.Nexwent.Service.Email.Presets.TicketHtmlPresets;
 import com.shubham.Nexwent.Service.Email.Presets.VenueEmailPresets;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
@@ -23,6 +24,8 @@ public class EmailService {
     private EventHtmlPresets eventHtmlPresets;
 
     private VenueEmailPresets venueEmailPresets;
+
+    private TicketHtmlPresets ticketHtmlPresets;
 
     public void AttendeeEmail(String to, String attendeeName) {
         String subject = "Welcome to our platform" + attendeeName;
@@ -64,6 +67,13 @@ public class EmailService {
             String body = venueEmailPresets.buildHtmlEventStatusNotConfirmed(venueDto.getVenueOwnerName());
             emailSender(to, subject, body);
         }
+    }
+
+    public void ticketEmail(String to, String attendeeName, String eventTitle, String dateAndTime, String venueName, String ticketType, String ticketId, String organizerName) {
+        String subject = "Ticket Confirmation Email";
+        String body = ticketHtmlPresets.buildTicketHtmlTemplate(attendeeName, eventTitle, dateAndTime, venueName, ticketType, ticketId, organizerName);
+        emailSender(to, subject, body);
+
     }
 
     public void emailSender(String to, String subject, String body) {
