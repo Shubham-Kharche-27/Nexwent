@@ -1,5 +1,6 @@
 package com.shubham.Nexwent.Dto;
 
+import com.shubham.Nexwent.Entity.Enums.VenueStatus;
 import com.shubham.Nexwent.Entity.Event;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
@@ -21,6 +22,8 @@ public class VenueDto {
     private String country;
     private String venueCapacity;
     private String parkingAvailable;
+    private String venueOwnerName;
+    private VenueStatus venueStatus;
 
     @Email(message = "Invalid email Id!")
     private String contactEmail;

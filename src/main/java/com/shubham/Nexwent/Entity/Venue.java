@@ -1,6 +1,7 @@
 package com.shubham.Nexwent.Entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.shubham.Nexwent.Entity.Enums.VenueStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,8 +29,12 @@ public class Venue {
     private String country;
     private String venueCapacity;
     private String parkingAvailable;
+    private String venueOwnerName;
     private String contactEmail;
     private String contactPhone;
+
+    @Enumerated(EnumType.STRING)
+    private VenueStatus venueStatus;
 
     @OneToMany(mappedBy = "venue",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JsonManagedReference(value = "venueReference")

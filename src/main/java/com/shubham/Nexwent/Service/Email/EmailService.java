@@ -1,9 +1,12 @@
 package com.shubham.Nexwent.Service.Email;
 
 import com.shubham.Nexwent.Dto.EventDto;
+import com.shubham.Nexwent.Dto.VenueDto;
 import com.shubham.Nexwent.Entity.Enums.EventStatus;
+import com.shubham.Nexwent.Entity.Enums.VenueStatus;
 import com.shubham.Nexwent.Service.Email.Presets.AttendeeHtmlPresets;
 import com.shubham.Nexwent.Service.Email.Presets.EventHtmlPresets;
+import com.shubham.Nexwent.Service.Email.Presets.VenueEmailPresets;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.AllArgsConstructor;
@@ -19,6 +22,8 @@ public class EmailService {
 
     private EventHtmlPresets eventHtmlPresets;
 
+    private VenueEmailPresets venueEmailPresets;
+
     public void AttendeeEmail(String to, String attendeeName) {
         String subject = "Welcome to our platform" + attendeeName;
         String body = attendeeHtmlPresets.buildHtmlAttendee(attendeeName);
@@ -33,14 +38,31 @@ public class EmailService {
 
     public void eventStatusEmail(String to, EventDto eventDto) {
         String subject = "Event booking status";
-        String body;
         if (eventDto.getEventStatus().equals(EventStatus.Confirmed)) {
-            body = eventHtmlPresets.buildHtmlEventStatusConfirmed(eventDto.getOrganizerName());
-            emailSender(to,subject,body);
+            String body = eventHtmlPresets.buildHtmlEventStatusConfirmed(eventDto.getOrganizerName());
+            emailSender(to, subject, body);
         }
-        if(eventDto.getEventStatus().equals(EventStatus.Not_Confirmed)){
-            body = eventHtmlPresets.buildHtmlEventStatusNotConfirmed(eventDto.getOrganizerName());
-            emailSender(to,subject,body);
+        if (eventDto.getEventStatus().equals(EventStatus.Not_Confirmed)) {
+            String body = eventHtmlPresets.buildHtmlEventStatusNotConfirmed(eventDto.getOrganizerName());
+            emailSender(to, subject, body);
+        }
+    }
+
+    public void pendingVenueEmail(String to, String venueOwnerName) {
+        String subject = "Venue booking status";
+        String body = venueEmailPresets.buildHtmlEvent(venueOwnerName);
+        emailSender(to, subject, body);
+    }
+
+    public void venueStatusEmail(String to, VenueDto venueDto) {
+        String subject = "Venue booking status";
+        if (venueDto.getVenueStatus().equals(VenueStatus.Confirmed)) {
+            String body = venueEmailPresets.buildHtmlEventStatusConfirmed(venueDto.getVenueOwnerName());
+            emailSender(to, subject, body);
+        }
+        if (venueDto.getVenueStatus().equals(VenueStatus.Not_Confirmed)) {
+            String body = venueEmailPresets.buildHtmlEventStatusNotConfirmed(venueDto.getVenueOwnerName());
+            emailSender(to, subject, body);
         }
     }
 
