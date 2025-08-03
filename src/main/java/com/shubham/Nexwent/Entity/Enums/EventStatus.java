@@ -1,7 +1,8 @@
 package com.shubham.Nexwent.Entity.Enums;
 
 public enum EventStatus {
-    Draft,
-    Published,
+    Confirmed,
+    Pending,
+    Not_Confirmed,
     Cancelled
 }
