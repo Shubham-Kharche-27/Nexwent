@@ -1,12 +1,15 @@
 package com.shubham.Nexwent.Service.Email.Presets;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class TicketHtmlPresets {
     public String buildTicketHtmlTemplate(String attendeeName, String eventTitle, String dateAndTime, String venueName, String ticketType, String ticketId, String organizerName) {
         return """
                 <html>
                   <style>
                     body {
-                      font-family: cursive;
+                      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
                       background-color: #f4f4f4;
                       word-spacing: 0.2em;
                       margin: 0;

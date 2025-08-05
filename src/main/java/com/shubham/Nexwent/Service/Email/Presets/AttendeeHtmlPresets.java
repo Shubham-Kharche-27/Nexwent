@@ -1,5 +1,8 @@
 package com.shubham.Nexwent.Service.Email.Presets;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class AttendeeHtmlPresets {
 
     public String buildHtmlAttendee(String attendeeName){
@@ -7,8 +10,8 @@ public class AttendeeHtmlPresets {
                 <html>
                     <body>
                         <style>
-                            *{\s
-                                font-family: cursive;
+                            *{
+                                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
                                 word-spacing: 0.2em;
                                 letter-spacing: 0.1em;
                             }

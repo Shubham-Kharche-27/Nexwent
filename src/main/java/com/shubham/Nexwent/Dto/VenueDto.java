@@ -16,14 +16,14 @@ public class VenueDto {
     private Long venueId;
     private String venueName;
     private String venueAddress;
-    private String City;
-    private String State;
-    private int Zipcode;
+    private String city;
+    private String state;
+    private int zipcode;
     private String country;
     private String venueCapacity;
     private String parkingAvailable;
     private String venueOwnerName;
-    private VenueStatus venueStatus;
+    private VenueStatus venueStatus = VenueStatus.Pending;
 
     @Email(message = "Invalid email Id!")
     private String contactEmail;
@@ -31,5 +31,5 @@ public class VenueDto {
     @Pattern(regexp = "^[6-9]\\d{9}$")
     private String contactPhone;
 
-    private Set<Event> events = new HashSet<>();
+
 }

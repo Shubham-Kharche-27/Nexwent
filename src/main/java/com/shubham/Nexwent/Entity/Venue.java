@@ -23,9 +23,9 @@ public class Venue {
     private Long venueId;
     private String venueName;
     private String venueAddress;
-    private String City;
-    private String State;
-    private int Zipcode;
+    private String city;
+    private String state;
+    private int zipcode;
     private String country;
     private String venueCapacity;
     private String parkingAvailable;

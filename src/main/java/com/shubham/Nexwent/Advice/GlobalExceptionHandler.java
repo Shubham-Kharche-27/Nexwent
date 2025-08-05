@@ -1,9 +1,6 @@
 package com.shubham.Nexwent.Advice;
 
-import com.shubham.Nexwent.Exception.AttendeeNotFoundException;
-import com.shubham.Nexwent.Exception.EventNotFoundException;
-import com.shubham.Nexwent.Exception.TicketsNotFoundException;
-import com.shubham.Nexwent.Exception.VenueNotFoundException;
+import com.shubham.Nexwent.Exception.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -30,5 +27,10 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(VenueNotFoundException.class)
     public ResponseEntity<String> handleGlobalException(VenueNotFoundException ex){
         return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(VenueAlreadyExistException.class)
+    public ResponseEntity<String> handleGlobalException(VenueAlreadyExistException ex){
+        return new ResponseEntity<>(ex.getMessage(),HttpStatus.BAD_REQUEST);
     }
 }

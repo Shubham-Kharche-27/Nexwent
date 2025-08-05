@@ -47,6 +47,6 @@ public class Tickets {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "attendeeId")
-    @JsonBackReference(value = "attendeeReference")
+    @JsonBackReference(value = "attendeeTicketsReference")
     private Attendee attendee;
 }

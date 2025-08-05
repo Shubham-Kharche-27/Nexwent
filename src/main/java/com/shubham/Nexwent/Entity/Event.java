@@ -57,7 +57,7 @@ public class Event {
             joinColumns = @JoinColumn(name = "eventId"),
             inverseJoinColumns = @JoinColumn(name = "attendeeId")
     )
-    @JsonBackReference("attendeeReference")
+    @JsonBackReference(value = "attendeeEventReference")
     private Set<Attendee> attendees = new HashSet<>();
 
     @OneToMany(mappedBy = "event",cascade = CascadeType.ALL,fetch = FetchType.EAGER)

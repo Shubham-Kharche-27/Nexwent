@@ -1,10 +1,13 @@
 package com.shubham.Nexwent.Service.Email.Presets;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class EventHtmlPresets {
     public String buildHtmlEvent(String organizerName) {
         return """
                 <html>
-                <body style="font-family: cursive; background-color: #f8f9fa; color: #333; word-spacing: 0.2em; ">
+                <body style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; background-color: #f8f9fa; color: #333; word-spacing: 0.2em; ">
                     <div style="max-width: 600px; margin: auto; background-color: #ffffff; border: 1px solid #ddd; padding: 20px; border-radius: 8px;">
                         <h2 style="color: #FFA500;">⏳ Booking Request Received</h2>
                         <p>Dear <strong>%s</strong>,</p>
@@ -21,7 +24,7 @@ public class EventHtmlPresets {
     public String buildHtmlEventStatusConfirmed(String organizerName) {
         return """
                 <html>
-                <body style="font-family: cursive; background-color: #f4f4f4; color: #333;">
+                <body style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; background-color: #f4f4f4; color: #333;">
                     <div style="max-width: 600px; margin: auto; background-color: #ffffff; border: 1px solid #ddd; padding: 20px; border-radius: 8px; word-spacing: 0.2em;">
                         <h2 style="color: #28a745;">✅ Booking Confirmed</h2>
                 
@@ -42,7 +45,7 @@ public class EventHtmlPresets {
     public String buildHtmlEventStatusNotConfirmed(String organizerName) {
         return """
                 <html>
-                <body style="font-family: cursive; background-color: #f8f9fa; color: #333; word-spacing: 0.2em;">
+                <body style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; background-color: #f8f9fa; color: #333; word-spacing: 0.2em;">
                     <div style="max-width: 600px; margin: auto; background-color: #ffffff; border: 1px solid #ddd; padding: 20px; border-radius: 8px;">
                         <h2 style="color: #dc3545;">❌ Booking Not Confirmed</h2>
                 

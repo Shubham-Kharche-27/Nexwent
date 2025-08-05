@@ -36,11 +36,11 @@ public class Attendee {
     private LocalDateTime registeredAt;
 
     @ManyToMany(mappedBy = "attendees",cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.EAGER)
-    @JsonManagedReference("attendeeReference")
+    @JsonManagedReference(value = "attendeeEventReference")
     private Set<Event> events = new HashSet<>();
 
     @OneToOne(mappedBy = "attendee",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonManagedReference(value = "attendeeReference")
+    @JsonManagedReference(value = "attendeeTicketsReference")
     private Tickets tickets;
 
     @PrePersist

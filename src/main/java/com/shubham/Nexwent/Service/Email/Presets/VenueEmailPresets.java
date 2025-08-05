@@ -1,11 +1,14 @@
 package com.shubham.Nexwent.Service.Email.Presets;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class VenueEmailPresets {
 
     public String buildHtmlEvent(String venueOwnerName) {
         return """
                 <html>
-                <body style="font-family: cursive; background-color: #f4f4f4; color: #333;word-spacing: 0.2em;">
+                <body style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; background-color: #f4f4f4; color: #333;word-spacing: 0.2em;">
                     <div style="max-width: 600px; margin: auto; background-color: #fff; border: 1px solid #ddd; padding: 20px; border-radius: 8px;">
                         <h2 style="color: #FFA500;">⏳ Venue Registration Pending</h2>
                         <p>Dear <strong>%s</strong>,</p>
@@ -22,7 +25,7 @@ public class VenueEmailPresets {
     public String buildHtmlEventStatusConfirmed(String venueOwnerName) {
         return """
                 <html>
-                <body style="font-family: cursive;word-spacing: 0.2em; background-color: #f4f4f4; color: #333;">
+                <body style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;word-spacing: 0.2em; background-color: #f4f4f4; color: #333;">
                     <div style="max-width: 600px; margin: auto; background-color: #fff; border: 1px solid #ddd; padding: 20px; border-radius: 8px;">
                         <h2 style="color: #28a745;">✅ Venue Registration Approved</h2>
                         <p>Dear <strong>%s</strong>,</p>
@@ -39,7 +42,7 @@ public class VenueEmailPresets {
     public String buildHtmlEventStatusNotConfirmed(String venueOwnerName) {
         return """
                 <html>
-                <body style="font-family: cursive;word-spacing: 0.2em; background-color: #f4f4f4; color: #333;">
+                <body style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;word-spacing: 0.2em; background-color: #f4f4f4; color: #333;">
                     <div style="max-width: 600px; margin: auto; background-color: #fff; border: 1px solid #ddd; padding: 20px; border-radius: 8px;">
                         <h2 style="color: #dc3545;">❌ Venue Registration Not Approved</h2>                
                         <p>Dear <strong>%s</strong>,</p>                

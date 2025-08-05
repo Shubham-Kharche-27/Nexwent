@@ -13,7 +13,9 @@ import jakarta.mail.internet.MimeMessage;
 import lombok.AllArgsConstructor;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
 
+@Service
 @AllArgsConstructor
 public class EmailService {
 
@@ -57,14 +59,14 @@ public class EmailService {
         emailSender(to, subject, body);
     }
 
-    public void venueStatusEmail(String to, VenueDto venueDto) {
+    public void venueStatusEmail(String to, VenueDto venueDto,String venueOwnerName) {
         String subject = "Venue booking status";
         if (venueDto.getVenueStatus().equals(VenueStatus.Confirmed)) {
-            String body = venueEmailPresets.buildHtmlEventStatusConfirmed(venueDto.getVenueOwnerName());
+            String body = venueEmailPresets.buildHtmlEventStatusConfirmed(venueOwnerName);
             emailSender(to, subject, body);
         }
         if (venueDto.getVenueStatus().equals(VenueStatus.Not_Confirmed)) {
-            String body = venueEmailPresets.buildHtmlEventStatusNotConfirmed(venueDto.getVenueOwnerName());
+            String body = venueEmailPresets.buildHtmlEventStatusNotConfirmed(venueOwnerName);
             emailSender(to, subject, body);
         }
     }
