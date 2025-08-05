@@ -1,5 +1,6 @@
 package com.shubham.Nexwent.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.shubham.Nexwent.Entity.Enums.Gender;
@@ -36,7 +37,7 @@ public class Attendee {
     private LocalDateTime registeredAt;
 
     @ManyToMany(mappedBy = "attendees",cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.EAGER)
-    @JsonManagedReference(value = "attendeeEventReference")
+    @JsonBackReference(value = "attendeeEventReference")
     private Set<Event> events = new HashSet<>();
 
     @OneToOne(mappedBy = "attendee",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
