@@ -39,6 +39,7 @@ public class Event {
 
     private String organizerName;
     private String organizerContact;
+    private String organizerEmail;
 
     @Enumerated(EnumType.STRING)
     private EventStatus eventStatus;
@@ -51,13 +52,13 @@ public class Event {
     @JsonBackReference(value = "venueReference")
     private Venue venue;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "eventAttendee",
             joinColumns = @JoinColumn(name = "eventId"),
             inverseJoinColumns = @JoinColumn(name = "attendeeId")
     )
-    @JsonManagedReference(value = "attendeeEventReference")
+    @JsonBackReference(value = "attendeeEventReference")
     private Set<Attendee> attendees = new HashSet<>();
 
     @OneToMany(mappedBy = "event",cascade = CascadeType.ALL,fetch = FetchType.EAGER)

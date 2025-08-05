@@ -18,6 +18,6 @@ public class TicketsDto {
     private TicketStatus ticketStatus;
     private PaymentMethod paymentMethod;
     private PaymentStatus paymentStatus;
-    private Event event;
-    private Attendee attendee;
+    private Long eventId;
+    private Long attendeeId;
 }

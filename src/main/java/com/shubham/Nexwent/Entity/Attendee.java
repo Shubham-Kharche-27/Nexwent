@@ -36,8 +36,8 @@ public class Attendee {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime registeredAt;
 
-    @ManyToMany(mappedBy = "attendees",cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.EAGER)
-    @JsonBackReference(value = "attendeeEventReference")
+    @ManyToMany(mappedBy = "attendees",cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.LAZY)
+    @JsonManagedReference(value = "attendeeEventReference")
     private Set<Event> events = new HashSet<>();
 
     @OneToOne(mappedBy = "attendee",cascade = CascadeType.ALL, fetch = FetchType.EAGER)

@@ -41,14 +41,14 @@ public class EmailService {
         emailSender(to, subject, body);
     }
 
-    public void eventStatusEmail(String to, EventDto eventDto) {
+    public void eventStatusEmail(String to, EventDto eventDto,String organizerName) {
         String subject = "Event booking status";
         if (eventDto.getEventStatus().equals(EventStatus.Confirmed)) {
-            String body = eventHtmlPresets.buildHtmlEventStatusConfirmed(eventDto.getOrganizerName());
+            String body = eventHtmlPresets.buildHtmlEventStatusConfirmed(organizerName);
             emailSender(to, subject, body);
         }
         if (eventDto.getEventStatus().equals(EventStatus.Not_Confirmed)) {
-            String body = eventHtmlPresets.buildHtmlEventStatusNotConfirmed(eventDto.getOrganizerName());
+            String body = eventHtmlPresets.buildHtmlEventStatusNotConfirmed(organizerName);
             emailSender(to, subject, body);
         }
     }
